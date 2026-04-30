@@ -1,0 +1,183 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { DataSource, Repository } from 'typeorm';
+import { Practitioner } from '../../domain/entities/Practitioner.entity';
+import {
+  PractitionerRepository,
+  PractitionerByAdUsernameResult,
+  PractitionerByUuidResult,
+  PractitionerBySpecialityResult,
+  PractitionerContactAndAddressResult,
+} from '../../domain/repositories/Practitioner.repository';
+
+@Injectable()
+export class PractitionerTypeOrmRepository implements PractitionerRepository {
+  constructor(
+    @InjectRepository(Practitioner)
+    private readonly repo: Repository<Practitioner>,
+    private readonly dataSource: DataSource,
+  ) {}
+
+  findAll(): Promise<Practitioner[]> { return this.repo.find(); }
+  findById(id: string): Promise<Practitioner | null> { return this.repo.findOne({ where: { id } as any }); }
+  save(entity: Practitioner): Promise<Practitioner> { return this.repo.save(entity); }
+  async delete(id: string): Promise<void> { await this.repo.delete(id); }
+
+  async findByAdUsername(adUsername: string): Promise<PractitionerByAdUsernameResult | null> {
+    const rows = await this.dataSource.query<PractitionerByAdUsernameResult[]>(`
+      SELECT
+          p.practitioner_uuid,
+          p.ad_username,
+          p.name_prefix,
+          p.name_given,
+          p.name_family,
+          p.name_text,
+          p.gender,
+          p.communication_language,
+          pr.role_id,
+          pr.role_uuid,
+          pr.role_code,
+          pr.role_display,
+          pr.period_start             AS role_period_start,
+          pr.period_end               AS role_period_end,
+          s.speciality_id,
+          s.fhir_code                 AS speciality_fhir_code,
+          s.fhir_display              AS speciality_fhir_display,
+          s.local_name                AS speciality_local_name,
+          o.organisation_uuid,
+          o.organisation_name,
+          l.location_uuid,
+          l.location_name,
+          l.location_alias,
+          l.address_city              AS location_city,
+          l.address_district          AS location_district,
+          l.telecom_phone             AS location_phone,
+          m.media_id,
+          m.media_file_name           AS photo_file_name,
+          m.content_type              AS photo_content_type,
+          fs.base_url + m.relative_path AS photo_url
+      FROM fhir.practitioner              p
+      INNER JOIN fhir.practitioner_role   pr ON pr.practitioner_id = p.practitioner_id AND pr.is_active = 1
+      INNER JOIN fhir.speciality          s  ON s.speciality_id    = pr.speciality_id  AND s.is_active  = 1
+      INNER JOIN fhir.organisation        o  ON o.organisation_id  = pr.organisation_id AND o.is_active = 1
+      LEFT JOIN  fhir.location            l  ON l.location_id      = pr.location_id    AND l.is_active  = 1
+      LEFT JOIN  fhir.practitioner_media  m  ON m.practitioner_id  = p.practitioner_id AND m.is_primary = 1 AND m.is_active = 1
+      LEFT JOIN  cfg.file_server_config   fs ON fs.config_id       = m.file_server_config_id AND fs.is_active = 1
+      WHERE p.ad_username = @0 AND p.is_active = 1
+    `, [adUsername]);
+    return rows[0] ?? null;
+  }
+
+  async findByUuid(practitionerUuid: string): Promise<PractitionerByUuidResult | null> {
+    const rows = await this.dataSource.query<PractitionerByUuidResult[]>(`
+      SELECT
+          p.practitioner_uuid,
+          p.ad_username,
+          p.name_prefix,
+          p.name_given,
+          p.name_family,
+          p.name_text,
+          p.gender,
+          p.birth_date,
+          p.communication_language,
+          p.active_fhir,
+          pr.role_uuid,
+          pr.role_code,
+          pr.role_display,
+          pr.period_start         AS role_period_start,
+          pr.period_end           AS role_period_end,
+          s.fhir_code             AS speciality_fhir_code,
+          s.fhir_display          AS speciality_fhir_display,
+          s.local_name            AS speciality_local_name,
+          o.organisation_uuid,
+          o.organisation_name,
+          m.media_file_name       AS photo_file_name,
+          m.content_type          AS photo_content_type,
+          fs.base_url + m.relative_path AS photo_url
+      FROM fhir.practitioner              p
+      INNER JOIN fhir.practitioner_role   pr ON pr.practitioner_id = p.practitioner_id AND pr.is_active = 1
+      INNER JOIN fhir.speciality          s  ON s.speciality_id    = pr.speciality_id  AND s.is_active  = 1
+      INNER JOIN fhir.organisation        o  ON o.organisation_id  = pr.organisation_id AND o.is_active = 1
+      LEFT JOIN  fhir.practitioner_media  m  ON m.practitioner_id  = p.practitioner_id AND m.is_primary = 1 AND m.is_active = 1
+      LEFT JOIN  cfg.file_server_config   fs ON fs.config_id       = m.file_server_config_id AND fs.is_active = 1
+      WHERE p.practitioner_uuid = @0 AND p.is_active = 1
+    `, [practitionerUuid]);
+    return rows[0] ?? null;
+  }
+
+  async findBySpeciality(specialityId?: number, localName?: string): Promise<PractitionerBySpecialityResult[]> {
+    return this.dataSource.query<PractitionerBySpecialityResult[]>(`
+      SELECT
+          p.practitioner_uuid,
+          p.name_prefix,
+          p.name_given,
+          p.name_family,
+          p.name_text,
+          s.speciality_id,
+          s.local_name            AS speciality_local_name,
+          s.fhir_display          AS speciality_fhir_display,
+          o.organisation_uuid,
+          o.organisation_name,
+          pr.role_code,
+          pr.period_start         AS role_period_start,
+          pr.period_end           AS role_period_end,
+          m.media_file_name       AS photo_file_name,
+          fs.base_url + m.relative_path AS photo_url
+      FROM fhir.practitioner              p
+      INNER JOIN fhir.practitioner_role   pr ON pr.practitioner_id = p.practitioner_id AND pr.is_active = 1
+      INNER JOIN fhir.speciality          s  ON s.speciality_id    = pr.speciality_id  AND s.is_active  = 1
+      INNER JOIN fhir.organisation        o  ON o.organisation_id  = pr.organisation_id AND o.is_active = 1
+      LEFT JOIN  fhir.practitioner_media  m  ON m.practitioner_id  = p.practitioner_id AND m.is_primary = 1 AND m.is_active = 1
+      LEFT JOIN  cfg.file_server_config   fs ON fs.config_id       = m.file_server_config_id AND fs.is_active = 1
+      WHERE p.is_active = 1 AND p.active_fhir = 1
+        AND (@0 IS NULL OR s.speciality_id = @0)
+        AND (@1 IS NULL OR s.local_name LIKE '%' + @1 + '%')
+      ORDER BY s.local_name, p.name_family, p.name_given
+    `, [specialityId ?? null, localName ?? null]);
+  }
+
+  async findContactAndAddress(practitionerUuid: string): Promise<PractitionerContactAndAddressResult> {
+    const [contacts, addresses] = await Promise.all([
+      this.dataSource.query(`
+        SELECT
+            p.practitioner_uuid,
+            p.name_text,
+            cp.contact_point_id,
+            cp.contact_system,
+            cp.contact_value,
+            cp.contact_use,
+            cp.contact_rank,
+            cp.period_start AS contact_period_start,
+            cp.period_end   AS contact_period_end
+        FROM fhir.practitioner p
+        INNER JOIN fhir.practitioner_contact_point cp
+               ON cp.practitioner_id = p.practitioner_id AND cp.is_active = 1
+        WHERE p.practitioner_uuid = @0 AND p.is_active = 1
+        ORDER BY cp.contact_system, cp.contact_rank
+      `, [practitionerUuid]),
+      this.dataSource.query(`
+        SELECT
+            p.practitioner_uuid,
+            a.address_id,
+            a.address_use,
+            a.address_type,
+            a.address_line_1,
+            a.address_line_2,
+            a.address_city,
+            a.address_district,
+            a.address_state,
+            a.address_postal_code,
+            a.address_country,
+            a.address_text,
+            a.period_start AS address_period_start,
+            a.period_end   AS address_period_end
+        FROM fhir.practitioner p
+        INNER JOIN fhir.practitioner_address a
+               ON a.practitioner_id = p.practitioner_id AND a.is_active = 1
+        WHERE p.practitioner_uuid = @0 AND p.is_active = 1
+        ORDER BY a.address_use
+      `, [practitionerUuid]),
+    ]);
+    return { contacts, addresses };
+  }
+}

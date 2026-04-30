@@ -1,0 +1,1888 @@
+openapi: "3.0.3"
+info:
+  title: ms-bs-practitioner-service
+  description: API Contract — Dominio hce_core — Jarvis Platform
+  version: "1.0.0"
+paths:
+  /FileServerConfigs:
+    get:
+      tags: [FileServerConfig]
+      summary: Listar FileServerConfigs
+      operationId: findAllFileServerConfigs
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FileServerConfig"
+    post:
+      tags: [FileServerConfig]
+      summary: Crear FileServerConfig
+      operationId: createFileServerConfig
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateFileServerConfigDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileServerConfig"
+  /FileServerConfigs/{id}:
+    get:
+      tags: [FileServerConfig]
+      summary: Obtener FileServerConfig
+      operationId: findOneFileServerConfig
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileServerConfig"
+        "404":
+          description: No encontrado
+    put:
+      tags: [FileServerConfig]
+      summary: Actualizar FileServerConfig
+      operationId: updateFileServerConfig
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateFileServerConfigDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [FileServerConfig]
+      summary: Eliminar FileServerConfig
+      operationId: deleteFileServerConfig
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /TenantIdentitys:
+    get:
+      tags: [TenantIdentity]
+      summary: Listar TenantIdentitys
+      operationId: findAllTenantIdentitys
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TenantIdentity"
+    post:
+      tags: [TenantIdentity]
+      summary: Crear TenantIdentity
+      operationId: createTenantIdentity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTenantIdentityDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantIdentity"
+  /TenantIdentitys/{id}:
+    get:
+      tags: [TenantIdentity]
+      summary: Obtener TenantIdentity
+      operationId: findOneTenantIdentity
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantIdentity"
+        "404":
+          description: No encontrado
+    put:
+      tags: [TenantIdentity]
+      summary: Actualizar TenantIdentity
+      operationId: updateTenantIdentity
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTenantIdentityDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [TenantIdentity]
+      summary: Eliminar TenantIdentity
+      operationId: deleteTenantIdentity
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /Organisations:
+    get:
+      tags: [Organisation]
+      summary: Listar Organisations
+      operationId: findAllOrganisations
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Organisation"
+    post:
+      tags: [Organisation]
+      summary: Crear Organisation
+      operationId: createOrganisation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganisationDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organisation"
+  /Organisations/{id}:
+    get:
+      tags: [Organisation]
+      summary: Obtener Organisation
+      operationId: findOneOrganisation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organisation"
+        "404":
+          description: No encontrado
+    put:
+      tags: [Organisation]
+      summary: Actualizar Organisation
+      operationId: updateOrganisation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganisationDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [Organisation]
+      summary: Eliminar Organisation
+      operationId: deleteOrganisation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /Specialitys:
+    get:
+      tags: [Speciality]
+      summary: Listar Specialitys
+      operationId: findAllSpecialitys
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Speciality"
+    post:
+      tags: [Speciality]
+      summary: Crear Speciality
+      operationId: createSpeciality
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSpecialityDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Speciality"
+  /Specialitys/{id}:
+    get:
+      tags: [Speciality]
+      summary: Obtener Speciality
+      operationId: findOneSpeciality
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Speciality"
+        "404":
+          description: No encontrado
+    put:
+      tags: [Speciality]
+      summary: Actualizar Speciality
+      operationId: updateSpeciality
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSpecialityDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [Speciality]
+      summary: Eliminar Speciality
+      operationId: deleteSpeciality
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /Locations:
+    get:
+      tags: [Location]
+      summary: Listar Locations
+      operationId: findAllLocations
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Location"
+    post:
+      tags: [Location]
+      summary: Crear Location
+      operationId: createLocation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLocationDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Location"
+  /Locations/{id}:
+    get:
+      tags: [Location]
+      summary: Obtener Location
+      operationId: findOneLocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Location"
+        "404":
+          description: No encontrado
+    put:
+      tags: [Location]
+      summary: Actualizar Location
+      operationId: updateLocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLocationDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [Location]
+      summary: Eliminar Location
+      operationId: deleteLocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /Practitioners:
+    get:
+      tags: [Practitioner]
+      summary: Listar Practitioners
+      operationId: findAllPractitioners
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Practitioner"
+    post:
+      tags: [Practitioner]
+      summary: Crear Practitioner
+      operationId: createPractitioner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Practitioner"
+  /Practitioners/{id}:
+    get:
+      tags: [Practitioner]
+      summary: Obtener Practitioner
+      operationId: findOnePractitioner
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Practitioner"
+        "404":
+          description: No encontrado
+    put:
+      tags: [Practitioner]
+      summary: Actualizar Practitioner
+      operationId: updatePractitioner
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [Practitioner]
+      summary: Eliminar Practitioner
+      operationId: deletePractitioner
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /PractitionerRoles:
+    get:
+      tags: [PractitionerRole]
+      summary: Listar PractitionerRoles
+      operationId: findAllPractitionerRoles
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PractitionerRole"
+    post:
+      tags: [PractitionerRole]
+      summary: Crear PractitionerRole
+      operationId: createPractitionerRole
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerRoleDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerRole"
+  /PractitionerRoles/{id}:
+    get:
+      tags: [PractitionerRole]
+      summary: Obtener PractitionerRole
+      operationId: findOnePractitionerRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerRole"
+        "404":
+          description: No encontrado
+    put:
+      tags: [PractitionerRole]
+      summary: Actualizar PractitionerRole
+      operationId: updatePractitionerRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerRoleDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [PractitionerRole]
+      summary: Eliminar PractitionerRole
+      operationId: deletePractitionerRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /PractitionerAddresss:
+    get:
+      tags: [PractitionerAddress]
+      summary: Listar PractitionerAddresss
+      operationId: findAllPractitionerAddresss
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PractitionerAddress"
+    post:
+      tags: [PractitionerAddress]
+      summary: Crear PractitionerAddress
+      operationId: createPractitionerAddress
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerAddressDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerAddress"
+  /PractitionerAddresss/{id}:
+    get:
+      tags: [PractitionerAddress]
+      summary: Obtener PractitionerAddress
+      operationId: findOnePractitionerAddress
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerAddress"
+        "404":
+          description: No encontrado
+    put:
+      tags: [PractitionerAddress]
+      summary: Actualizar PractitionerAddress
+      operationId: updatePractitionerAddress
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerAddressDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [PractitionerAddress]
+      summary: Eliminar PractitionerAddress
+      operationId: deletePractitionerAddress
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /PractitionerContactPoints:
+    get:
+      tags: [PractitionerContactPoint]
+      summary: Listar PractitionerContactPoints
+      operationId: findAllPractitionerContactPoints
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PractitionerContactPoint"
+    post:
+      tags: [PractitionerContactPoint]
+      summary: Crear PractitionerContactPoint
+      operationId: createPractitionerContactPoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerContactPointDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerContactPoint"
+  /PractitionerContactPoints/{id}:
+    get:
+      tags: [PractitionerContactPoint]
+      summary: Obtener PractitionerContactPoint
+      operationId: findOnePractitionerContactPoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerContactPoint"
+        "404":
+          description: No encontrado
+    put:
+      tags: [PractitionerContactPoint]
+      summary: Actualizar PractitionerContactPoint
+      operationId: updatePractitionerContactPoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerContactPointDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [PractitionerContactPoint]
+      summary: Eliminar PractitionerContactPoint
+      operationId: deletePractitionerContactPoint
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /PractitionerMedias:
+    get:
+      tags: [PractitionerMedia]
+      summary: Listar PractitionerMedias
+      operationId: findAllPractitionerMedias
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PractitionerMedia"
+    post:
+      tags: [PractitionerMedia]
+      summary: Crear PractitionerMedia
+      operationId: createPractitionerMedia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerMediaDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerMedia"
+  /PractitionerMedias/{id}:
+    get:
+      tags: [PractitionerMedia]
+      summary: Obtener PractitionerMedia
+      operationId: findOnePractitionerMedia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PractitionerMedia"
+        "404":
+          description: No encontrado
+    put:
+      tags: [PractitionerMedia]
+      summary: Actualizar PractitionerMedia
+      operationId: updatePractitionerMedia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePractitionerMediaDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [PractitionerMedia]
+      summary: Eliminar PractitionerMedia
+      operationId: deletePractitionerMedia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /DomainEventOutboxs:
+    get:
+      tags: [DomainEventOutbox]
+      summary: Listar DomainEventOutboxs
+      operationId: findAllDomainEventOutboxs
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DomainEventOutbox"
+    post:
+      tags: [DomainEventOutbox]
+      summary: Crear DomainEventOutbox
+      operationId: createDomainEventOutbox
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDomainEventOutboxDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DomainEventOutbox"
+  /DomainEventOutboxs/{id}:
+    get:
+      tags: [DomainEventOutbox]
+      summary: Obtener DomainEventOutbox
+      operationId: findOneDomainEventOutbox
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DomainEventOutbox"
+        "404":
+          description: No encontrado
+    put:
+      tags: [DomainEventOutbox]
+      summary: Actualizar DomainEventOutbox
+      operationId: updateDomainEventOutbox
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDomainEventOutboxDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [DomainEventOutbox]
+      summary: Eliminar DomainEventOutbox
+      operationId: deleteDomainEventOutbox
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+  /LegacySyncLogs:
+    get:
+      tags: [LegacySyncLog]
+      summary: Listar LegacySyncLogs
+      operationId: findAllLegacySyncLogs
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LegacySyncLog"
+    post:
+      tags: [LegacySyncLog]
+      summary: Crear LegacySyncLog
+      operationId: createLegacySyncLog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLegacySyncLogDto"
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LegacySyncLog"
+  /LegacySyncLogs/{id}:
+    get:
+      tags: [LegacySyncLog]
+      summary: Obtener LegacySyncLog
+      operationId: findOneLegacySyncLog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LegacySyncLog"
+        "404":
+          description: No encontrado
+    put:
+      tags: [LegacySyncLog]
+      summary: Actualizar LegacySyncLog
+      operationId: updateLegacySyncLog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLegacySyncLogDto"
+      responses:
+        "200":
+          description: Actualizado
+    delete:
+      tags: [LegacySyncLog]
+      summary: Eliminar LegacySyncLog
+      operationId: deleteLegacySyncLog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Eliminado
+components:
+  schemas:
+    FileServerConfig:
+      type: object
+      required: [config_id, profile_name, base_url, is_default, user_create, date_create, is_active]
+      properties:
+        config_id:
+          type: number
+        profile_name:
+          type: string
+        base_url:
+          type: string
+        is_default:
+          type: boolean
+        config_description:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateFileServerConfigDto:
+      type: object
+      required: [config_id, profile_name, base_url, is_default, user_create, date_create, is_active]
+      properties:
+        config_id:
+          type: number
+        profile_name:
+          type: string
+        base_url:
+          type: string
+        is_default:
+          type: boolean
+        config_description:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    TenantIdentity:
+      type: object
+      required: [tenant_identity_id, tenant_uuid, tenant_code, tenant_name, country_code, timezone, fhir_version, environment, system_version, provisioned_at, user_create, date_create, is_active]
+      properties:
+        tenant_identity_id:
+          type: number
+        tenant_uuid:
+          type: string
+        tenant_code:
+          type: string
+        tenant_name:
+          type: string
+        country_code:
+          type: string
+        timezone:
+          type: string
+        fhir_version:
+          type: string
+        environment:
+          type: string
+        system_version:
+          type: string
+        provisioned_at:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateTenantIdentityDto:
+      type: object
+      required: [tenant_identity_id, tenant_uuid, tenant_code, tenant_name, country_code, timezone, fhir_version, environment, system_version, provisioned_at, user_create, date_create, is_active]
+      properties:
+        tenant_identity_id:
+          type: number
+        tenant_uuid:
+          type: string
+        tenant_code:
+          type: string
+        tenant_name:
+          type: string
+        country_code:
+          type: string
+        timezone:
+          type: string
+        fhir_version:
+          type: string
+        environment:
+          type: string
+        system_version:
+          type: string
+        provisioned_at:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    Organisation:
+      type: object
+      required: [organisation_id, organisation_uuid, organisation_name, active_fhir, user_create, date_create, is_active]
+      properties:
+        organisation_id:
+          type: number
+        organisation_uuid:
+          type: string
+        legacy_id:
+          type: string
+        organisation_name:
+          type: string
+        type_code:
+          type: string
+        type_display:
+          type: string
+        active_fhir:
+          type: boolean
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateOrganisationDto:
+      type: object
+      required: [organisation_id, organisation_uuid, organisation_name, active_fhir, user_create, date_create, is_active]
+      properties:
+        organisation_id:
+          type: number
+        organisation_uuid:
+          type: string
+        legacy_id:
+          type: string
+        organisation_name:
+          type: string
+        type_code:
+          type: string
+        type_display:
+          type: string
+        active_fhir:
+          type: boolean
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    Speciality:
+      type: object
+      required: [speciality_id, fhir_code, fhir_system, fhir_display, local_name, user_create, date_create, is_active]
+      properties:
+        speciality_id:
+          type: number
+        fhir_code:
+          type: string
+        fhir_system:
+          type: string
+        fhir_display:
+          type: string
+        local_name:
+          type: string
+        legacy_speciality_id:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateSpecialityDto:
+      type: object
+      required: [speciality_id, fhir_code, fhir_system, fhir_display, local_name, user_create, date_create, is_active]
+      properties:
+        speciality_id:
+          type: number
+        fhir_code:
+          type: string
+        fhir_system:
+          type: string
+        fhir_display:
+          type: string
+        local_name:
+          type: string
+        legacy_speciality_id:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    Location:
+      type: object
+      required: [location_id, location_uuid, organisation_id, location_status, location_name, location_mode, address_country, user_create, date_create, is_active]
+      properties:
+        location_id:
+          type: number
+        location_uuid:
+          type: string
+        organisation_id:
+          type: number
+        identifier_value:
+          type: string
+        location_status:
+          type: string
+        location_name:
+          type: string
+        location_alias:
+          type: string
+        location_description:
+          type: string
+        location_mode:
+          type: string
+        type_code:
+          type: string
+        type_display:
+          type: string
+        physical_type_code:
+          type: string
+        physical_type_display:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        address_city:
+          type: string
+        address_district:
+          type: string
+        address_state:
+          type: string
+        address_postal_code:
+          type: string
+        address_country:
+          type: string
+        position_longitude:
+          type: number
+        position_latitude:
+          type: number
+        telecom_phone:
+          type: string
+        telecom_email:
+          type: string
+        legacy_location_id:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateLocationDto:
+      type: object
+      required: [location_id, location_uuid, organisation_id, location_status, location_name, location_mode, address_country, user_create, date_create, is_active]
+      properties:
+        location_id:
+          type: number
+        location_uuid:
+          type: string
+        organisation_id:
+          type: number
+        identifier_value:
+          type: string
+        location_status:
+          type: string
+        location_name:
+          type: string
+        location_alias:
+          type: string
+        location_description:
+          type: string
+        location_mode:
+          type: string
+        type_code:
+          type: string
+        type_display:
+          type: string
+        physical_type_code:
+          type: string
+        physical_type_display:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        address_city:
+          type: string
+        address_district:
+          type: string
+        address_state:
+          type: string
+        address_postal_code:
+          type: string
+        address_country:
+          type: string
+        position_longitude:
+          type: number
+        position_latitude:
+          type: number
+        telecom_phone:
+          type: string
+        telecom_email:
+          type: string
+        legacy_location_id:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    Practitioner:
+      type: object
+      required: [practitioner_id, practitioner_uuid, ad_username, name_family, name_given, active_fhir, user_create, date_create, is_active]
+      properties:
+        practitioner_id:
+          type: number
+        practitioner_uuid:
+          type: string
+        ad_username:
+          type: string
+        identifier_value:
+          type: string
+        identifier_system:
+          type: string
+        identifier_type_code:
+          type: string
+        name_family:
+          type: string
+        name_given:
+          type: string
+        name_prefix:
+          type: string
+        name_suffix:
+          type: string
+        gender:
+          type: string
+        birth_date:
+          type: string
+        active_fhir:
+          type: boolean
+        communication_language:
+          type: string
+        legacy_practitioner_id:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreatePractitionerDto:
+      type: object
+      required: [practitioner_id, practitioner_uuid, ad_username, name_family, name_given, active_fhir, user_create, date_create, is_active]
+      properties:
+        practitioner_id:
+          type: number
+        practitioner_uuid:
+          type: string
+        ad_username:
+          type: string
+        identifier_value:
+          type: string
+        identifier_system:
+          type: string
+        identifier_type_code:
+          type: string
+        name_family:
+          type: string
+        name_given:
+          type: string
+        name_prefix:
+          type: string
+        name_suffix:
+          type: string
+        gender:
+          type: string
+        birth_date:
+          type: string
+        active_fhir:
+          type: boolean
+        communication_language:
+          type: string
+        legacy_practitioner_id:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    PractitionerRole:
+      type: object
+      required: [role_id, role_uuid, practitioner_id, organisation_id, speciality_id, active_fhir, user_create, date_create, is_active]
+      properties:
+        role_id:
+          type: number
+        role_uuid:
+          type: string
+        practitioner_id:
+          type: number
+        organisation_id:
+          type: number
+        speciality_id:
+          type: number
+        location_id:
+          type: number
+        role_code:
+          type: string
+        role_display:
+          type: string
+        period_start:
+          type: string
+        period_end:
+          type: string
+        active_fhir:
+          type: boolean
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreatePractitionerRoleDto:
+      type: object
+      required: [role_id, role_uuid, practitioner_id, organisation_id, speciality_id, active_fhir, user_create, date_create, is_active]
+      properties:
+        role_id:
+          type: number
+        role_uuid:
+          type: string
+        practitioner_id:
+          type: number
+        organisation_id:
+          type: number
+        speciality_id:
+          type: number
+        location_id:
+          type: number
+        role_code:
+          type: string
+        role_display:
+          type: string
+        period_start:
+          type: string
+        period_end:
+          type: string
+        active_fhir:
+          type: boolean
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    PractitionerAddress:
+      type: object
+      required: [address_id, practitioner_id, address_use, address_type, address_country, user_create, date_create, is_active]
+      properties:
+        address_id:
+          type: number
+        practitioner_id:
+          type: number
+        address_use:
+          type: string
+        address_type:
+          type: string
+        address_text:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        address_city:
+          type: string
+        address_district:
+          type: string
+        address_state:
+          type: string
+        address_postal_code:
+          type: string
+        address_country:
+          type: string
+        period_start:
+          type: string
+        period_end:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreatePractitionerAddressDto:
+      type: object
+      required: [address_id, practitioner_id, address_use, address_type, address_country, user_create, date_create, is_active]
+      properties:
+        address_id:
+          type: number
+        practitioner_id:
+          type: number
+        address_use:
+          type: string
+        address_type:
+          type: string
+        address_text:
+          type: string
+        address_line_1:
+          type: string
+        address_line_2:
+          type: string
+        address_city:
+          type: string
+        address_district:
+          type: string
+        address_state:
+          type: string
+        address_postal_code:
+          type: string
+        address_country:
+          type: string
+        period_start:
+          type: string
+        period_end:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    PractitionerContactPoint:
+      type: object
+      required: [contact_point_id, practitioner_id, contact_system, contact_value, user_create, date_create, is_active]
+      properties:
+        contact_point_id:
+          type: number
+        practitioner_id:
+          type: number
+        contact_system:
+          type: string
+        contact_value:
+          type: string
+        contact_use:
+          type: string
+        contact_rank:
+          type: number
+        period_start:
+          type: string
+        period_end:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreatePractitionerContactPointDto:
+      type: object
+      required: [contact_point_id, practitioner_id, contact_system, contact_value, user_create, date_create, is_active]
+      properties:
+        contact_point_id:
+          type: number
+        practitioner_id:
+          type: number
+        contact_system:
+          type: string
+        contact_value:
+          type: string
+        contact_use:
+          type: string
+        contact_rank:
+          type: number
+        period_start:
+          type: string
+        period_end:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    PractitionerMedia:
+      type: object
+      required: [media_id, practitioner_id, file_server_config_id, content_type, media_file_name, relative_path, media_type, is_primary, user_create, date_create, is_active]
+      properties:
+        media_id:
+          type: number
+        practitioner_id:
+          type: number
+        file_server_config_id:
+          type: number
+        content_type:
+          type: string
+        media_file_name:
+          type: string
+        relative_path:
+          type: string
+        media_type:
+          type: string
+        media_title:
+          type: string
+        file_size_bytes:
+          type: number
+        file_hash:
+          type: string
+        is_primary:
+          type: boolean
+        attachment_date:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreatePractitionerMediaDto:
+      type: object
+      required: [media_id, practitioner_id, file_server_config_id, content_type, media_file_name, relative_path, media_type, is_primary, user_create, date_create, is_active]
+      properties:
+        media_id:
+          type: number
+        practitioner_id:
+          type: number
+        file_server_config_id:
+          type: number
+        content_type:
+          type: string
+        media_file_name:
+          type: string
+        relative_path:
+          type: string
+        media_type:
+          type: string
+        media_title:
+          type: string
+        file_size_bytes:
+          type: number
+        file_hash:
+          type: string
+        is_primary:
+          type: boolean
+        attachment_date:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    DomainEventOutbox:
+      type: object
+      required: [event_id, event_uuid, event_type, aggregate_type, aggregate_id, event_payload, event_status, occurred_at, retry_count, user_create, date_create, is_active]
+      properties:
+        event_id:
+          type: number
+        event_uuid:
+          type: string
+        event_type:
+          type: string
+        aggregate_type:
+          type: string
+        aggregate_id:
+          type: string
+        event_payload:
+          type: string
+        event_status:
+          type: string
+        occurred_at:
+          type: string
+        processed_at:
+          type: string
+        retry_count:
+          type: number
+        last_error:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateDomainEventOutboxDto:
+      type: object
+      required: [event_id, event_uuid, event_type, aggregate_type, aggregate_id, event_payload, event_status, occurred_at, retry_count, user_create, date_create, is_active]
+      properties:
+        event_id:
+          type: number
+        event_uuid:
+          type: string
+        event_type:
+          type: string
+        aggregate_type:
+          type: string
+        aggregate_id:
+          type: string
+        event_payload:
+          type: string
+        event_status:
+          type: string
+        occurred_at:
+          type: string
+        processed_at:
+          type: string
+        retry_count:
+          type: number
+        last_error:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    LegacySyncLog:
+      type: object
+      required: [sync_log_id, sync_direction, entity_type, sync_operation, sync_result, sync_started_at, user_create, date_create, is_active]
+      properties:
+        sync_log_id:
+          type: number
+        event_uuid:
+          type: string
+        sync_direction:
+          type: string
+        entity_type:
+          type: string
+        entity_id_hce:
+          type: string
+        entity_id_legacy:
+          type: string
+        sync_operation:
+          type: string
+        sync_result:
+          type: string
+        result_detail:
+          type: string
+        payload_sent:
+          type: string
+        payload_received:
+          type: string
+        sync_started_at:
+          type: string
+        sync_finished_at:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
+    CreateLegacySyncLogDto:
+      type: object
+      required: [sync_log_id, sync_direction, entity_type, sync_operation, sync_result, sync_started_at, user_create, date_create, is_active]
+      properties:
+        sync_log_id:
+          type: number
+        event_uuid:
+          type: string
+        sync_direction:
+          type: string
+        entity_type:
+          type: string
+        entity_id_hce:
+          type: string
+        entity_id_legacy:
+          type: string
+        sync_operation:
+          type: string
+        sync_result:
+          type: string
+        result_detail:
+          type: string
+        payload_sent:
+          type: string
+        payload_received:
+          type: string
+        sync_started_at:
+          type: string
+        sync_finished_at:
+          type: string
+        user_create:
+          type: string
+        user_modify:
+          type: string
+        date_create:
+          type: string
+        date_modify:
+          type: string
+        is_active:
+          type: boolean
